@@ -35,18 +35,19 @@
           type="button"
           value="Cancel"
           hidden="true" />
-        <form id="book-form" onsubmit="" hidden="true">
+        <!-- <form id="book-form" onsubmit="" hidden="true"> -->
+        <form id="book-form" onsubmit="">
           <label for="title">Title: </label>
           <input id="title" type="text" required />
           <label for="authors">Author: </label>
           <input id="authors" type="text" />
           <label for="city">City: </label>
           <input id="city" type="text" />
-          <label for="state">State/Province: </label>
-          <input id="state" type="text" />
+          <label for="states">State/Province: </label>
+          <select name="states" id="states" disabled></select>
           <label for="country">Country: </label>
           <select name="countries" id="countries" required>
-            <option value="">--Please choose from list--</option>
+            <option value="">--Please choose--</option>
           </select>
           <button class="btn" type="submit">Submit!</button>
         </form>
