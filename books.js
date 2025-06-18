@@ -1,4 +1,5 @@
 const bookList = document.getElementById("book-list");
+
 const mockBooks = [
   {
     title: "The Shadow Atlas",
@@ -42,10 +43,12 @@ const mockBooks = [
   },
 ];
 
-export function getBooks() {
+function getBooks() {
   for (let book of mockBooks) {
     const li = document.createElement("li");
     li.innerHTML = `<b>${book.title}</b>, ${book.authors}`;
     bookList.appendChild(li);
   }
 }
+
+export { getBooks };
