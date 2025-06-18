@@ -22,7 +22,7 @@ function createCountrySelect() {
   const countries = getCountries();
 
   for (let c of countries) {
-    const option = document.createElement("options");
+    const option = document.createElement("option");
     option.value = c;
     option.innerHTML = c;
     countrySelect.appendChild(option);
@@ -63,4 +63,4 @@ function handleButtons() {
 /* MAIN stack */
 initMap();
 handleButtons();
-// createCountrySelect();
+createCountrySelect();
