@@ -30,9 +30,14 @@ export function handleButtons() {
   });
 }
 
-export function renderBookListForUser(userId) {
+// Just grab the books and do nothing else
+function getBooksForUser(userId) {
   const data = localStorage.getItem(`books_by_user_${userId}`);
-  const books = data ? JSON.parse(data) : [];
+  return data ? JSON.parse(data) : [];
+}
+
+export function renderBookListForUser(userId) {
+  const books = getBooksForUser(userId);
 
   for (let book of books) {
     const li = document.createElement("li");
@@ -42,14 +47,15 @@ export function renderBookListForUser(userId) {
 }
 
 export function handleSubmit(userId) {
-  bookForm.addEventListener("submit", () => {
+  bookForm.addEventListener("submit", (e) => {
     e.preventDefault();
+
     const formData = new FormData(bookForm);
-    const title = formData.title;
-    const authors = formData.authors;
-    const city = formData.city;
-    const state = formData.state;
-    const country = formData.country;
+    const title = formData.get("title");
+    const authors = formData.get("authors");
+    const city = formData.get("city");
+    const state = formData.get("state");
+    const country = formData.get("country");
     const newBook = {
       title: title,
       authors: authors,
@@ -57,14 +63,17 @@ export function handleSubmit(userId) {
       state: state,
       country: country,
     };
+
     // Update user's list in localStorage
     const books = getBooksForUser(userId);
     books.push(newBook);
     localStorage.setItem(`books_by_user_${userId}`, JSON.stringify(books));
+
     showFormBtn.disabled = false;
     hideFormBtn.hidden = true;
     bookForm.reset();
     bookForm.hidden = true;
-    // renderBookListForUser(userId);
+
+    renderBookListForUser(userId);
   });
 }
