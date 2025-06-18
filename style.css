@@ -6,9 +6,13 @@ body {
 
 h1 {
   text-align: center;
+  display: inline;
   grid-column: 1 / span 2;
 }
 
+h2 {
+  text-align: center;
+}
 .btn {
   border-radius: 5px;
 }
@@ -17,10 +21,9 @@ h1 {
   display: grid;
   min-width: 100%;
   margin: 20px;
-  grid-template-columns: 1fr 2fr;
-  /* gap: 1rem; */
+  gap: 2rem;
+  grid-template-columns: 3fr 2fr;
   justify-content: center;
-  /* align-items: center; */
 }
 
 #map {
