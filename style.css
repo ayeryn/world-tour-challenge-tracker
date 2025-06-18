@@ -9,6 +9,10 @@ h1 {
   grid-column: 1 / span 2;
 }
 
+.btn {
+  border-radius: 5px;
+}
+
 #container {
   display: grid;
   min-width: 100%;

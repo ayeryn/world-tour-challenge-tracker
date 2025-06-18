@@ -28,7 +28,26 @@
           <li>Book1</li>
           <li>Book2</li>
         </ol>
-        <input id="addBookAtn" type="button" value="Add Book" />
+        <input id="show-form-btn" class="btn" type="button" value="Add Book" />
+        <input
+          id="hide-form-btn"
+          class="btn"
+          type="button"
+          value="Cancel"
+          hidden="true" />
+        <form id="book-form" onsubmit="" hidden="true">
+          <label for="title">Title: </label>
+          <input id="title" type="text" required />
+          <label for="authors">Author: </label>
+          <input id="authors" type="text" />
+          <label for="city">City: </label>
+          <input id="city" type="text" />
+          <label for="state">State/Province: </label>
+          <input id="state" type="text" />
+          <label for="country">Country: </label>
+          <input id="country" type="text" />
+          <button class="btn" type="submit">Submit!</button>
+        </form>
       </div>
       <div id="map"></div>
     </div>
