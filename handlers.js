@@ -1,5 +1,6 @@
 import { API_KEY } from "./config.js";
 import { getBooksForUser, getCoordinates, getLocationStr } from "./utils.js";
+import { map } from "./map.js";
 
 const showFormBtn = document.getElementById("show-form-btn");
 const hideFormBtn = document.getElementById("hide-form-btn");
@@ -111,6 +112,11 @@ export function renderBookListForUser(userId) {
 
     li.appendChild(button);
     bookList.appendChild(li);
+    if (book.lat && book.lon) {
+      L.marker([book.lat, book.lon])
+        .addTo(map)
+        .bindPopup(`<b>${book.title}</b><br>${book.city}, ${book.country}`);
+    }
   }
 }
 
