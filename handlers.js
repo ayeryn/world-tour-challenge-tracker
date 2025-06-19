@@ -38,10 +38,29 @@ function getBooksForUser(userId) {
 
 export function renderBookListForUser(userId) {
   const books = getBooksForUser(userId);
+  bookList.innerHTML = "";
 
   for (let book of books) {
     const li = document.createElement("li");
-    li.innerHTML = `<b>${book.title}</b>, ${book.authors}`;
+    li.innerHTML = `<p><b>${book.title}</b>, ${book.authors}</p>`;
+
+    // Add delete icon and event handler
+    const button = document.createElement("button");
+    button.setAttribute("aria-label", "Delete book");
+    button.className = "delete-btn";
+    button.innerHTML = "<i class='bi bi-x-circle'1></i>";
+    button.addEventListener("click", () => {
+      let currentBooks = getBooksForUser(userId);
+      currentBooks = currentBooks.filter(
+        (b) => b.title !== book.title && b.authors !== book.authors
+      );
+      localStorage.setItem(
+        `books_by_user_${userId}`,
+        JSON.stringify(currentBooks)
+      );
+    });
+
+    li.appendChild(button);
     bookList.appendChild(li);
   }
 }
