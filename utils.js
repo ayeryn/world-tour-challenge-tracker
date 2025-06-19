@@ -19,3 +19,11 @@ export function getLocationStr(city, state, country) {
     .map((item) => item.toUpperCase())
     .join("+");
 }
+
+export const geoIcon = L.icon({
+  iconUrl: "img/icons8-geo-48.png",
+
+  iconSize: [35, 35],
+  iconAnchor: [22, 94], // point of the icon which will correspond to marker's location
+  popupAnchor: [-3, -76], // point from which the popup should open relative to the iconAnchor
+});

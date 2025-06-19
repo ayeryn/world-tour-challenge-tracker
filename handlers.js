@@ -4,6 +4,7 @@ import {
   getCoordinates,
   getLocationStr,
   getTheme,
+  geoIcon,
 } from "./utils.js";
 import { map } from "./map.js";
 
@@ -123,7 +124,9 @@ export function renderBookListForUser(userId) {
     li.appendChild(div);
     bookList.appendChild(li);
     if (book.lat && book.lon) {
-      L.marker([book.lat, book.lon])
+      L.marker([book.lat, book.lon], {
+        icon: geoIcon,
+      })
         .addTo(map)
         .bindPopup(`<b>${book.title}</b><br>${book.city}, ${book.country}`);
     }
