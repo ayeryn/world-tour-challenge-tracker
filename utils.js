@@ -8,6 +8,11 @@ export function getCoordinates(userId) {
   return data ? JSON.parse(data) : {};
 }
 
+export function getTheme(userId) {
+  const data = localStorage.getItem(`theme_by_user_${userId}`);
+  return data ? "dark" : "light";
+}
+
 export function getLocationStr(city, state, country) {
   return [city, state, country]
     .filter(Boolean)

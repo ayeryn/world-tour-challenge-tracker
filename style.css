@@ -3,6 +3,25 @@
   --coral-hover: #e55656;
   --blue-accent: #aad3df;
   --sepia: #fdf6e3;
+  --sepia-dark: #1e1e1c;
+}
+
+header {
+  display: flex;
+  justify-content: right;
+}
+
+.light-switch {
+  padding-right: 10px;
+  padding-top: 10px;
+}
+
+#theme-icon:hover {
+  cursor: pointer;
+}
+
+#theme-icon {
+  font-size: 1.5em;
 }
 
 body {
@@ -10,6 +29,11 @@ body {
   height: 100%;
   font-family: "Poppins", sans-serif;
   background-color: var(--sepia);
+}
+
+.dark-mode {
+  background-color: var(--sepia-dark);
+  color: var(--sepia);
 }
 
 h1 {
@@ -39,7 +63,7 @@ form select {
   display: block;
   width: 100%;
   margin-bottom: 10px;
-  height: 1.5rem;
+  height: 1.5em;
 }
 
 #container {
@@ -68,6 +92,17 @@ form select {
   border: none;
 }
 
+.btn:hover {
+  cursor: pointer;
+  background-color: var(--coral-hover);
+}
+
+.btn:disabled {
+  background-color: #555;
+  color: gray;
+  cursor: not-allowed;
+}
+
 .delete-btn {
   margin-left: 20px;
   border: none;
@@ -90,10 +125,6 @@ form select {
   color: white;
 }
 
-.btn:hover {
-  cursor: pointer;
-  background-color: var(--coral-hover);
-}
 .delete-icon:hover {
   cursor: pointer;
   background-color: var(--coral-hover);

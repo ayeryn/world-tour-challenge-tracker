@@ -1,7 +1,14 @@
 import { API_KEY } from "./config.js";
-import { getBooksForUser, getCoordinates, getLocationStr } from "./utils.js";
+import {
+  getBooksForUser,
+  getCoordinates,
+  getLocationStr,
+  getTheme,
+} from "./utils.js";
 import { map } from "./map.js";
 
+const body = document.querySelector("body");
+const themeIcon = document.getElementById("theme-icon");
 const showFormBtn = document.getElementById("show-form-btn");
 const hideFormBtn = document.getElementById("hide-form-btn");
 const bookForm = document.getElementById("book-form");
@@ -155,5 +162,26 @@ export function handleSubmit(userId) {
     bookForm.hidden = true;
 
     renderBookListForUser(userId);
+  });
+}
+
+export function toggleTheme(userId) {
+  const storedTheme = getTheme(userId);
+  const initialDark = storedTheme === "dark";
+
+  if (initialDark) {
+    body.classList.add("dark-theme");
+  }
+
+  themeIcon.addEventListener("click", () => {
+    const storedTheme = getTheme(userId);
+
+    if (storedTheme === "light") {
+      body.classList.add("dark-mode");
+      localStorage.setItem(`theme_by_user_${userId}`, "dark");
+    } else {
+      body.classList.toggle("dark-mode");
+      localStorage.setItem(`theme_by_user_${userId}`, "light");
+    }
   });
 }

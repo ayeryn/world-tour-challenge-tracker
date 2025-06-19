@@ -4,6 +4,7 @@ import {
   handleButtons,
   handleSubmit,
   renderBookListForUser,
+  toggleTheme,
 } from "./handlers.js";
 
 function getOrCreateUserId() {
@@ -21,4 +22,5 @@ initMap();
 renderBookListForUser(currentUserId);
 handleButtons();
 handleSubmit(currentUserId);
+toggleTheme(currentUserId);
 createCountrySelect();
