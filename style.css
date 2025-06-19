@@ -6,8 +6,7 @@ body {
 
 h1 {
   text-align: center;
-  display: inline;
-  grid-column: 1 / span 2;
+  display: block;
 }
 
 h2 {
@@ -38,15 +37,20 @@ li p {
 }
 
 #container {
-  display: grid;
+  display: flex;
   margin: 20px;
   gap: 2rem;
-  grid-template-columns: 2fr 1fr;
   justify-content: center;
+  /* flex-direction: column; */
 }
 
 #map {
   min-height: 500px;
+  flex: 2;
+}
+
+#books {
+  flex: 1;
 }
 
 form {
@@ -64,4 +68,10 @@ form select {
   width: 100%;
   margin-bottom: 10px;
   height: 1.5rem;
+}
+
+@media screen and (max-width: 500px) {
+  #container {
+    flex-direction: column;
+  }
 }
