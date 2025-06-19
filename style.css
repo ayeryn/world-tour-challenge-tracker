@@ -2,12 +2,14 @@
   --coral: #ff6b6b;
   --coral-hover: #e55656;
   --blue-accent: #aad3df;
+  --sepia: #fdf6e3;
 }
 
 body {
   margin: 0;
   height: 100%;
   font-family: "Poppins", sans-serif;
+  background-color: var(--sepia);
 }
 
 h1 {
