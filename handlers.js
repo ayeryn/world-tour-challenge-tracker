@@ -90,13 +90,15 @@ export function renderBookListForUser(userId) {
 
   for (let book of books) {
     const li = document.createElement("li");
-    li.innerHTML = `<p><b>${book.title}</b>, ${book.authors}</p>`;
+    const div = document.createElement("div");
+    div.classList = "book-item";
+    div.innerHTML = `<p><b>${book.title}</b>, ${book.authors}</p>`;
 
     // Add delete icon and event handler
     const button = document.createElement("button");
     button.setAttribute("aria-label", "Delete book");
     button.className = "delete-btn";
-    button.innerHTML = "<i class='bi bi-x-circle'1></i>";
+    button.innerHTML = "<i class='bi bi-x-circle delete-icon'></i>";
     button.addEventListener("click", () => {
       let currentBooks = getBooksForUser(userId);
       currentBooks = currentBooks.filter(
@@ -110,7 +112,8 @@ export function renderBookListForUser(userId) {
       renderBookListForUser(userId);
     });
 
-    li.appendChild(button);
+    div.appendChild(button);
+    li.appendChild(div);
     bookList.appendChild(li);
     if (book.lat && book.lon) {
       L.marker([book.lat, book.lon])

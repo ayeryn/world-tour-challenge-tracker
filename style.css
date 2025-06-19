@@ -1,7 +1,13 @@
+:root {
+  --coral: #ff6b6b;
+  --coral-hover: #e55656;
+  --blue-accent: #aad3df;
+}
+
 body {
   margin: 0;
   height: 100%;
-  font-family: sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 h1 {
@@ -13,27 +19,25 @@ h2 {
   text-align: center;
 }
 
-li {
-  justify-content: flex-end;
-}
-
 li p {
   display: inline;
 }
 
-.btn {
-  border-radius: 5px;
+form {
+  border: 1px solid var(--coral);
+  border-radius: 15px;
+  padding: 20px;
+  margin-top: 10px;
+  width: 80%;
 }
 
-.delete-btn {
-  margin-left: 20px;
-  border: none;
-  background-color: transparent;
-}
-
-.btn:hover,
-.delete-btn:hover {
-  cursor: pointer;
+form label,
+form input,
+form select {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+  height: 1.5rem;
 }
 
 #container {
@@ -41,7 +45,6 @@ li p {
   margin: 20px;
   gap: 2rem;
   justify-content: center;
-  /* flex-direction: column; */
 }
 
 #map {
@@ -53,21 +56,51 @@ li p {
   flex: 1;
 }
 
-form {
-  border: 1px solid;
-  border-radius: 15px;
-  padding: 20px;
-  margin-top: 30px;
-  width: 80%;
+.btn {
+  border-radius: 5px;
+  height: 2rem;
+  background-color: var(--coral);
+  font-weight: 600;
+  margin-block: 10px;
+  color: white;
+  border: none;
 }
 
-form label,
-form input,
-form select {
-  display: block;
-  width: 100%;
-  margin-bottom: 10px;
-  height: 1.5rem;
+.delete-btn {
+  margin-left: 20px;
+  border: none;
+  background-color: transparent;
+  overflow: hidden;
+  padding: 0;
+  line-height: 0;
+  border-radius: 50%;
+}
+
+.delete-icon {
+  background-color: var(--coral);
+  border-radius: 50%;
+  font-size: 1.5rem;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.btn:hover {
+  cursor: pointer;
+  background-color: var(--coral-hover);
+}
+.delete-icon:hover {
+  cursor: pointer;
+  background-color: var(--coral-hover);
+}
+
+.book-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 @media screen and (max-width: 500px) {
