@@ -5,3 +5,5 @@ export function initMap() {
     attribution: "&copy; OpenStreetMap contributors",
   }).addTo(map);
 }
+
+

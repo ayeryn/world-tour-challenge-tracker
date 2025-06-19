@@ -1,3 +1,5 @@
+import { API_KEY } from "./config.js";
+
 const showFormBtn = document.getElementById("show-form-btn");
 const hideFormBtn = document.getElementById("hide-form-btn");
 const bookForm = document.getElementById("book-form");
@@ -52,12 +54,14 @@ export function renderBookListForUser(userId) {
     button.addEventListener("click", () => {
       let currentBooks = getBooksForUser(userId);
       currentBooks = currentBooks.filter(
-        (b) => b.title !== book.title && b.authors !== book.authors
+        (b) => !(b.title === book.title && b.authors === book.authors)
       );
       localStorage.setItem(
         `books_by_user_${userId}`,
         JSON.stringify(currentBooks)
       );
+
+      renderBookListForUser(userId);
     });
 
     li.appendChild(button);
@@ -65,8 +69,28 @@ export function renderBookListForUser(userId) {
   }
 }
 
+async function convertToCoordinates(city, state, country) {
+  let request = "https://geocode.maps.co/search?";
+  if (city !== "") {
+    request += `city=${city.replace(" ", "+")}&`;
+  }
+  if (state !== "") {
+    request += `state=${state.replace(" ", "+")}&`;
+  }
+  request += `country=${country.replace(" ", "+")}&api_key=${API_KEY}`;
+  console.log("Request: " + request);
+
+  try {
+    const response = await fetch(request);
+    const data = await response.json();
+    return [data[0].lat, data[0].lon];
+  } catch (e) {
+    console.error(e);
+  }
+}
+
 export function handleSubmit(userId) {
-  bookForm.addEventListener("submit", (e) => {
+  bookForm.addEventListener("submit", async (e) => {
     e.preventDefault();
 
     const formData = new FormData(bookForm);
@@ -75,12 +99,15 @@ export function handleSubmit(userId) {
     const city = formData.get("city");
     const state = formData.get("state");
     const country = formData.get("country");
+    const [lat, lon] = await convertToCoordinates(city, state, country);
     const newBook = {
       title: title,
       authors: authors,
       city: city,
       state: state,
       country: country,
+      lat: lat,
+      lon: lon,
     };
 
     // Update user's list in localStorage
